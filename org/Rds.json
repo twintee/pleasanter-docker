@@ -1,0 +1,12 @@
+{
+    "Dbms": "PostgreSQL",
+    "Provider": "Local",
+    "TimeZoneInfo": "___TZ___",
+    "SaConnectionString":"Server=pleasanter-db;Port=___POSTGRES_PORT___;Database=postgres;UID=postgres;PWD=___POSTGRES_PASSWORD___",
+    "OwnerConnectionString":"Server=pleasanter-db;Port=___POSTGRES_PORT___;Database=#ServiceName#;UID=#ServiceName#_Owner;PWD=SetAdminsPWD",
+    "UserConnectionString":"Server=pleasanter-db;Port=___POSTGRES_PORT___;Database=#ServiceName#;UID=#ServiceName#_User;PWD=SetUsersPWD",
+    "SqlCommandTimeOut": 600,
+    "MinimumTime": 3,
+    "DeadlockRetryCount": 4,
+    "DeadlockRetryInterval": 1000
+}

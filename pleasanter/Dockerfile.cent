@@ -1,0 +1,55 @@
+FROM centos:centos7
+
+# aptパッケージ更新
+RUN rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7 && \
+    yum -y update && \
+    yum clean all && \
+    localedef -f UTF-8 -i ja_JP ja_JP.UTF-8 && \
+    ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
+ENV LANG="ja_JP UTF-8" \
+    LANGUAGE="ja_JP:ja" \
+    LC_ALL="ja_JP.UTF-8" \
+    TZ="Asia/Tokyo"
+
+# nginx.repo追加
+COPY ./nginx.repo /etc/yum.repos.d
+
+RUN yum -y update \
+    && yum -y install \
+    vim \
+    git \
+    unzip \
+    nginx \
+    epel-release
+
+# pleasanger.service追加
+COPY ./pleasanter.service /etc/systemd/system
+
+# home設定コピー
+COPY ./home/* /root/
+
+# # nginx関係ファイル追加
+# COPY ./pleasanter.conf /etc/nginx/conf.d
+
+# GDI+ install
+RUN yum -y install libgdiplus
+
+WORKDIR /work
+
+# .net core3.1 install
+RUN rpm -Uvh https://packages.microsoft.com/config/rhel/7/packages-microsoft-prod.rpm
+RUN yum -y update && \
+    yum -y install dotnet-sdk-3.1
+
+WORKDIR /web
+
+# プリザンター展開
+COPY ./Pleasanter.zip /work
+RUN unzip /work/Pleasanter.zip -d /web
+
+WORKDIR /web/pleasanter
+
+RUN yum -y update && \
+    yum clean all
+
+CMD ["/sbin/init"]
