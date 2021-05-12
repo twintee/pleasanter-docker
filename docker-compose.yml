@@ -22,8 +22,8 @@ services:
   pleasanter:
     build:
       context: pleasanter
-      dockerfile: Dockerfile.$DESTRIBUTION
-    image: pleasanter-$DESTRIBUTION:latest
+      dockerfile: Dockerfile.$DISTRIBUTION
+    image: pleasanter-$DISTRIBUTION:latest
     container_name: pleasanter-base
     # user: root
     privileged: true

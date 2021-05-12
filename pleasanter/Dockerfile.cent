@@ -1,6 +1,6 @@
 FROM centos:centos7
 
-# aptパッケージ更新
+# yumパッケージ更新
 RUN rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7 && \
     yum -y update && \
     yum clean all && \

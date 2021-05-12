@@ -13,6 +13,7 @@ https://qiita.com/ta24toy27/items/986b3057e08f3da2fc06
 ## 準備
 
 - `./.env`を編集して設定変更
+    - DISTRIBUTION: pleasanterコンテナのベースOS(cent -> centos7, deb -> buster-slim)
     - TZ: タイムゾーン
     - POSTGRES_PORT: postgresqlの公開ポート
     - POSTGRES_PASSWORD: postgresqlユーザーのパスワード

@@ -43,7 +43,7 @@ def main():
     cmd=f"docker-compose up -d"
     if fn.input_yn("rebuild image? (y/*) :"):
 
-        for line in fn.cmd_lines(_cmd=f"docker rmi pleasanter_{params['DESTRIBUTION']}"):
+        for line in fn.cmd_lines(_cmd=f"docker rmi pleasanter_{params['DISTRIBUTION']}"):
             sys.stdout.write(line)
         for line in fn.cmd_lines(_cmd="docker-compose build", _encode='utf-8'):
             sys.stdout.write(line)

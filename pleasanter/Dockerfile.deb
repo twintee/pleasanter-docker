@@ -1,10 +1,9 @@
 FROM debian:buster-slim
 
-# aptパッケージ更新
-
 # home設定
 COPY ./home/* /root/
 
+# aptパッケージ更新
 RUN apt-get update && \
     apt-get install -y \
     vim \
