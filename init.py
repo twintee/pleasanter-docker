@@ -39,7 +39,7 @@ def main():
             join(dir_script, 'pleasanter', 'pleasanter.conf'))
 
     # イメージリビルド
-    container_base = "pleasanter-base"
+    container_base = "pls-base"
     cmd=f"docker-compose up -d"
     if fn.input_yn("rebuild image? (y/*) :"):
 

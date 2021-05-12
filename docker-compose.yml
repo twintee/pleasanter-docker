@@ -4,7 +4,7 @@ services:
 
   db:
     image: postgres:12-alpine
-    container_name: pleasanter-db
+    container_name: pls-db
     ports:
       - "${POSTGRES_PORT}:5432"
     environment:
@@ -23,8 +23,8 @@ services:
     build:
       context: pleasanter
       dockerfile: Dockerfile.$DISTRIBUTION
-    image: pleasanter-$DISTRIBUTION:latest
-    container_name: pleasanter-base
+    image: pls-$DISTRIBUTION:latest
+    container_name: pls-base
     # user: root
     privileged: true
     ports:
