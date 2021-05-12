@@ -3,7 +3,7 @@ FROM debian:buster-slim
 # aptパッケージ更新
 
 # home設定
-COPY ./home/* /etc/systemd/system
+COPY ./home/* /root/
 
 RUN apt-get update && \
     apt-get install -y \
@@ -12,16 +12,14 @@ RUN apt-get update && \
     wget \
     unzip \
     nginx \
-    epel-release \
     locales \
+    systemd \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # locale設定
-RUN localedef -f UTF-8 -i ja_JP ja_JP.UTF-8
-ENV LANG ja_JP.UTF-8 \
-    LANGUAGE ja_JP:ja \
-    LC_ALL ja_JP.UTF-8 \
-    TZ JST-9
+RUN sed -i -E 's/# (ja_JP.UTF-8)/\1/' /etc/locale.gen && \
+    locale-gen && \
+    update-locale LANG=ja_JP.UTF-8
 
 # pleasanger.service追加
 COPY ./pleasanter.service /etc/systemd/system

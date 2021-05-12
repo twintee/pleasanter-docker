@@ -30,6 +30,8 @@ services:
     ports:
       - "${PLS_PORT}:80"
     tty: true
+    environment:
+      TZ: ${TZ}
     working_dir: "${PLS_DIR}"
     volumes:
       - ./pleasanter/pleasanter.conf:/etc/nginx/conf.d/pleasanter.conf
