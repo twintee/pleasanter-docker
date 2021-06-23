@@ -20,7 +20,6 @@ https://qiita.com/ta24toy27/items/986b3057e08f3da2fc06
     - POSTGRES_MEM: postgresql使用メモリ
     - PLS_PORT: プリザンター用ポート=8080
     - PLS_MEM: プリザンター使用メモリ
-    - PLS_DIR: プリザンター展開ディレクトリ（原則変更不可）
 
 - pythonコマンド実行
 `python3 ./init.py`

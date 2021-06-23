@@ -32,7 +32,7 @@ services:
     tty: true
     environment:
       TZ: ${TZ}
-    working_dir: "${PLS_DIR}"
+    working_dir: "/web/pleasanter"
     volumes:
       - ./pleasanter/pleasanter.conf:/etc/nginx/conf.d/pleasanter.conf
     command: /sbin/init
